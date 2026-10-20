@@ -37,7 +37,7 @@ export default async function SalesPage() {
               </tr>
             ) : null}
             {leads.map((lead) => (
-              <tr key={String(lead.id)} className="border-b border-neutral-100">
+              <tr key={String(lead.id)} className="border-b border-neutral-100 hover:bg-neutral-50">
                 <td className="px-4 py-3">
                   <p className="font-medium">{String(lead.name)}</p>
                   <p className="text-neutral-500">{String(lead.email)}</p>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BotAvatar } from "@/components/bot-avatar";
 import { Spark } from "@/components/spark";
 import { StatusBadge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -34,10 +35,10 @@ export default async function OverviewPage() {
       </Card>
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <Kpi label="Revenue collected" value={money(home.revenueCents)} data={home.series.revenue} color="#16A34A" hint="Paid session invoices" />
-        <Kpi label="On the calendar today" value={String(home.bookingsToday)} data={home.series.bookings} color="#2F5BEA" hint="Last 7 days" />
+        <Kpi label="Revenue collected" value={money(home.revenueCents)} data={home.series.revenue} color="#16A34A" hint="Paid session invoices · 7 days" />
+        <Kpi label="On the calendar today" value={String(home.bookingsToday)} data={home.series.bookings} color="#2F5BEA" hint="Sessions · last 7 days" />
         <Kpi label="Tickets still open" value={String(home.openTickets)} data={home.series.tickets} color="#D97706" hint="Open or escalated" />
-        <Kpi label="Approvals waiting" value={String(home.pendingApprovals)} data={home.series.approvals} color="#172B6E" hint="Founder inbox" />
+        <Kpi label="Approvals waiting" value={String(home.pendingApprovals)} data={home.series.approvals} color="#F59E0B" hint="Founder inbox · 7 days" />
       </div>
 
       <div className="grid gap-4 lg:grid-cols-2">
@@ -66,11 +67,16 @@ export default async function OverviewPage() {
             </Link>
           </div>
           <ul className="mt-4 space-y-3">
-            {(home.activity as { id: string; bot: string; summary: string; created_at: string }[]).map((item) => (
-              <li key={String(item.id)} className="text-sm">
-                <span className="font-semibold capitalize">{item.bot}</span>
-                <span className="text-neutral-500"> · {ago(String(item.created_at))}</span>
-                <p className="text-neutral-700">{item.summary}</p>
+            {(home.activity as { id: string; bot: string; summary: string; created_at: string; department?: string }[]).map((item) => (
+              <li key={String(item.id)} className="flex gap-3 text-sm">
+                <BotAvatar bot={String(item.bot)} size="sm" />
+                <div>
+                  <p>
+                    <span className="font-semibold capitalize">{item.bot}</span>
+                    <span className="text-neutral-500"> · {item.department ?? "ops"} · {ago(String(item.created_at))}</span>
+                  </p>
+                  <p className="text-neutral-700">{item.summary}</p>
+                </div>
               </li>
             ))}
           </ul>

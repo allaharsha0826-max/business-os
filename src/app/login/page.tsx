@@ -18,7 +18,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
           {usingDefaultAdminPassword() ? (
             <p className="mt-3 rounded-md bg-neutral-50 px-3 py-2 text-sm">Local password: demo</p>
           ) : null}
-          {query.error ? <p className="mt-3 text-sm text-error-600">That password did not match.</p> : null}
+          {query.error ? <p className="mt-3 text-sm text-error-600">{query.error}</p> : null}
           <form action="/api/auth/login" method="POST" className="mt-6 grid gap-3">
             <input type="hidden" name="next" value={next} />
             <Label htmlFor="password">Password</Label>

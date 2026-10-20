@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { Suspense } from "react";
-import { Toaster } from "sonner";
+import { AppToaster } from "@/components/app-toaster";
 import { Flash } from "@/components/flash";
 import { PaymentBanner } from "@/components/payment-banner";
 import "./globals.css";
@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Flash />
         </Suspense>
         {children}
-        <Toaster position="top-center" richColors closeButton />
+        <AppToaster />
       </body>
     </html>
   );

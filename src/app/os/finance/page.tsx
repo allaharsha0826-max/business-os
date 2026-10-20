@@ -44,7 +44,7 @@ export default async function FinancePage() {
               </tr>
             ) : null}
             {invoices.map((invoice) => (
-              <tr key={String(invoice.id)} className="border-t border-neutral-100">
+              <tr key={String(invoice.id)} className="border-t border-neutral-100 hover:bg-neutral-50">
                 <td className="px-4 py-3">
                   <Link href={`/invoice/${String(invoice.id)}`} className="font-semibold text-primary-600">
                     {String(invoice.number)}

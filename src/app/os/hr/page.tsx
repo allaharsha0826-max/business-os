@@ -50,7 +50,7 @@ export default async function HrPage() {
             </thead>
             <tbody>
               {applicants.map((applicant) => (
-                <tr key={String(applicant.id)} className="border-t border-neutral-100">
+                <tr key={String(applicant.id)} className="border-t border-neutral-100 hover:bg-neutral-50">
                   <td className="px-4 py-3">
                     {String(applicant.name)}
                     <span className="block text-neutral-500">{String(applicant.email)}</span>

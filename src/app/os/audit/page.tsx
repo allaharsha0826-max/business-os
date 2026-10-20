@@ -24,7 +24,7 @@ export default async function AuditPage() {
             </tr>
           ) : null}
           {rows.map((row) => (
-            <tr key={String(row.id)} className="border-t border-neutral-100">
+            <tr key={String(row.id)} className="border-t border-neutral-100 hover:bg-neutral-50">
               <td className="px-4 py-3 whitespace-nowrap text-neutral-500">{formatDateTime(String(row.created_at), "America/Chicago")}</td>
               <td className="px-4 py-3 font-medium">{String(row.actor)}</td>
               <td className="px-4 py-3">{String(row.action)}</td>

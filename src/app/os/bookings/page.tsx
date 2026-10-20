@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { StatusBadge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
+import { money } from "@/lib/money";
 import { listInvoices, listSessions } from "@/lib/store";
 import { formatDateTime } from "@/lib/time";
 
@@ -50,9 +51,17 @@ export default async function BookingsPage() {
                   </form>
                 ) : null}
                 {invoice ? (
-                  <Link href={`/invoice/${String(invoice.id)}`} className="mt-3 inline-block text-sm font-semibold text-primary-600">
-                    {String(invoice.number)} · {String(invoice.status)}
-                  </Link>
+                  <div className="mt-3 flex flex-wrap items-center gap-3">
+                    <Link href={`/invoice/${String(invoice.id)}`} className="text-sm font-semibold text-primary-600">
+                      {String(invoice.number)}
+                    </Link>
+                    <StatusBadge status={String(invoice.status)} />
+                    {String(invoice.status) !== "paid" ? (
+                      <Button asChild size="sm">
+                        <Link href={`/pay/invoice/${String(invoice.id)}`}>Pay {money(Number(invoice.amount_cents))}</Link>
+                      </Button>
+                    ) : null}
+                  </div>
                 ) : null}
               </Card>
             );

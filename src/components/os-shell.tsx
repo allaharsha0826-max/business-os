@@ -77,7 +77,7 @@ export function OsShell({
                 aria-current={active ? "page" : undefined}
                 className={cn(
                   "flex shrink-0 items-center gap-2 rounded-md px-3 py-2 text-sm font-medium",
-                  active ? "bg-primary-50 text-primary-700" : "text-neutral-700 hover:bg-neutral-50",
+                  active ? "bg-primary-50 text-primary-700" : "text-neutral-700 hover:bg-neutral-50 focus-visible:bg-neutral-50",
                 )}
               >
                 <Icon className="h-4 w-4" aria-hidden />
@@ -89,7 +89,9 @@ export function OsShell({
             );
           })}
         </nav>
-        <p className="hidden px-6 py-4 text-xs font-medium text-neutral-500 md:block">14-day trial · no card</p>
+        <p className="mx-3 mb-4 mt-4 hidden rounded-full bg-accent-100 px-3 py-1.5 text-center text-xs font-semibold text-neutral-900 md:block">
+          14-day trial · no card
+        </p>
       </aside>
       <div className="min-w-0">
         <header className="flex flex-wrap items-center justify-between gap-3 border-b border-neutral-200 bg-white px-4 py-3 md:px-8">

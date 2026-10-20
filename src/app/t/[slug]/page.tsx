@@ -62,7 +62,7 @@ export default async function BookingPage({
                   <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">{group.label}</p>
                   <div className="mt-2 grid gap-2">
                     {group.slots.map((slot) => (
-                      <label key={slot.startsAt} className="flex min-h-11 cursor-pointer items-center gap-3 rounded-md border border-neutral-200 bg-white px-3 py-2">
+                      <label key={slot.startsAt} className="flex min-h-11 cursor-pointer items-center gap-3 rounded-md border border-neutral-200 bg-white px-3 py-2 has-[:checked]:border-primary-600 has-[:checked]:bg-primary-50">
                         <input type="radio" name="starts_at" value={slot.startsAt} required className="h-4 w-4" />
                         <span className="text-sm">
                           {formatTime(slot.startsAt, timeZone)} Central

@@ -9,7 +9,8 @@ export async function POST(request: Request) {
   const next = safeNextPath(String(form.get("next") ?? "/os"));
   const origin = await requestOrigin();
   if (!tokensMatch(password, adminPassword())) {
-    return NextResponse.redirect(new URL(`/login?error=1&next=${encodeURIComponent(next)}`, origin), 303);
+    const message = encodeURIComponent("That password did not match.");
+    return NextResponse.redirect(new URL(`/login?error=${message}&next=${encodeURIComponent(next)}`, origin), 303);
   }
   const response = NextResponse.redirect(new URL(next, origin), 303);
   response.cookies.set(ADMIN_COOKIE, adminToken(adminPassword()), adminCookieOptions());
